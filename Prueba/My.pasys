@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pasys:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pasys="www.unican.es/istr/pasys">
+  <ownedElements xsi:type="pasys:AVROService"/>
+  <ownedElements xsi:type="pasys:AWSVirtualProcessingNode"/>
+  <ownedElements xsi:type="pasys:CassandraService"/>
+  <ownedElements xsi:type="pasys:KafkaService"/>
+  <ownedElements xsi:type="pasys:KafkaWorkloadStreamData"/>
+  <ownedElements xsi:type="pasys:KubernetesCluster"/>
+  <ownedElements xsi:type="pasys:MemSQLService"/>
+  <ownedElements xsi:type="pasys:Neo4JService"/>
+  <ownedElements xsi:type="pasys:Network"/>
+  <ownedElements xsi:type="pasys:NetworkUtilization"/>
+  <ownedElements xsi:type="pasys:NodeScheduler"/>
+  <ownedElements xsi:type="pasys:OrchestrationCluster"/>
+  <ownedElements xsi:type="pasys:PhysicalProcessingNode"/>
+  <ownedElements xsi:type="pasys:ProcessingNodeCluster"/>
+  <ownedElements xsi:type="pasys:ProcessingNodeMemory"/>
+  <ownedElements xsi:type="pasys:ProcessingNodeUtilization"/>
+  <ownedElements xsi:type="pasys:PrometheusService"/>
+  <ownedElements xsi:type="pasys:SchedulableSet"/>
+  <ownedElements xsi:type="pasys:SparkService"/>
+  <ownedElements xsi:type="pasys:StormService"/>
+  <ownedElements xsi:type="pasys:StreamDataRate"/>
+  <ownedElements xsi:type="pasys:SwarmCluster"/>
+  <ownedElements xsi:type="pasys:Workflow"/>
+  <ownedElements xsi:type="pasys:WorkflowLatency"/>
+  <ownedElements xsi:type="pasys:WorkloadStreamData"/>
+  <ownedElements xsi:type="pasys:TaskProcessingAmount"/>
+  <ownedElements xsi:type="pasys:ZookeeperService"/>
+  <authenticationFiles/>
+</pasys:ComputationalSystem>
