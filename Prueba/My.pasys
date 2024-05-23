@@ -10,9 +10,11 @@
   <ownedElements xsi:type="pasys:Neo4JService"/>
   <ownedElements xsi:type="pasys:Network"/>
   <ownedElements xsi:type="pasys:NetworkUtilization"/>
-  <ownedElements xsi:type="pasys:NodeScheduler"/>
+  <ownedElements xsi:type="pasys:NodeScheduler" host="//@ownedElements.5"/>
   <ownedElements xsi:type="pasys:OrchestrationCluster"/>
-  <ownedElements xsi:type="pasys:PhysicalProcessingNode"/>
+  <ownedElements xsi:type="pasys:PhysicalProcessingNode">
+    <ownedMeters xsi:type="pasys:NodeResourceMeter"/>
+  </ownedElements>
   <ownedElements xsi:type="pasys:ProcessingNodeCluster"/>
   <ownedElements xsi:type="pasys:ProcessingNodeMemory"/>
   <ownedElements xsi:type="pasys:ProcessingNodeUtilization"/>
@@ -22,7 +24,11 @@
   <ownedElements xsi:type="pasys:StormService"/>
   <ownedElements xsi:type="pasys:StreamDataRate"/>
   <ownedElements xsi:type="pasys:SwarmCluster"/>
-  <ownedElements xsi:type="pasys:Workflow"/>
+  <ownedElements xsi:type="pasys:Workflow">
+    <ownedStreamData xsi:type="pasys:KafkaFlowStreamData"/>
+    <ownedStreamData xsi:type="pasys:KafkaFlowStreamData"/>
+    <ownedTaskExecutors/>
+  </ownedElements>
   <ownedElements xsi:type="pasys:WorkflowLatency"/>
   <ownedElements xsi:type="pasys:WorkloadStreamData"/>
   <ownedElements xsi:type="pasys:TaskProcessingAmount"/>
