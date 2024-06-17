@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pasys:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pasys="www.unican.es/istr/pasys" name="SantanderPollution" date="20/11/2019" authors="P. López y R. Dintén">
+<pasys:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pasys="www.unican.es/istr/pasys" name="New Cassandra Service" date="20/11/2019" authors="P. López y R. Dintén">
   <ownedElements xsi:type="pasys:ProcessingNodeCluster" name="StormCluster" id="StormCluster" nodes="//@ownedElements.1 //@ownedElements.3"/>
   <ownedElements xsi:type="pasys:PhysicalProcessingNode" name="NimbusNode" id="NimbusNode" ip="172.31.16.48" os="Ubuntu" concurrencyLevel="8" userName="gestor"/>
   <ownedElements xsi:type="pasys:ProcessingNodeCluster" name="NimbusCluster" id="NimbusCluster" nodes="//@ownedElements.1"/>
@@ -40,12 +40,14 @@
   <ownedElements xsi:type="pasys:KafkaWorkloadStreamData" name="Pollution" id="Pollution" numPartitions="1" numReplication="1" holder="1">
     <deploymentConfig xsi:type="pasys:NodeDeploymentConf" artifactLocator="/home/gestor/apache/services/kafka/bin" artifactName="kafka-topics.sh" configFolderPath="/home/gestor/apache/apps/pollution/topics/config" scriptFolderPath="/home/gestor/apache/apps/pollution/topics/scripts" dataFolderPath="/home/gestor/apache/apps/pollution/topics/data" logFolderPath="/home/gestor/apache/apps/pollution/topics/log"/>
   </ownedElements>
-  <ownedElements xsi:type="pasys:Workflow" name="PollutionProcess" id="PollutionProcess" rootTask="//@ownedElements.19/@ownedTasks.0" scheduler="//@ownedElements.17">
-    <deploymentConfig xsi:type="pasys:NodeDeploymentConf" artifactLocator="/home/gestor/apache/apps/pollution/workflows/jars" artifactName="SantanderPollution.jar" configFolderPath="/home/gestor/apache/apps/pollution/workflows/config" scriptFolderPath="/home/gestor/apache/apps/pollution/workflows/scripts" dataFolderPath="/home/gestor/apache/apps/pollution/workflows/data" logFolderPath="/home/gestor/apache/apps/pollution/workflows/logs"/>
-    <ownedTasks name="MainTask" id="MainTask" implementingClassName="es.unican.dintenr.santanderPollution.SantanderPollutionTopology" triggerStreamData="//@ownedElements.18"/>
+  <ownedElements xsi:type="pasys:Workflow" name="new Task" id="PollutionProcess" scheduler="//@ownedElements.17">
+    <deploymentConfig xsi:type="pasys:NomadDeploymentConf"/>
+    <ownedTaskExecutors/>
   </ownedElements>
   <ownedElements xsi:type="pasys:CassandraService" name="PollutionCassandra" id="PollutionCassandra" host="//@ownedElements.6" logging="root" passwd="root" port="9042" seeds="//@ownedElements.6" seedProviderClass="SimpleProvider" dataFileDir="/home/gestor/apache/Services/cassandra/data/data">
-    <deploymentConfig xsi:type="pasys:NodeDeploymentConf" artifactLocator="/home/gestor/apache/services/cassandra/bin" artifactName="cassandra" configFolderPath="/home/gestor/apache/services/cassandra/config" scriptFolderPath="/home/gestor/apache/services/cassandra/scripts" dataFolderPath="/home/gestor/apache/services/cassandra/data" logFolderPath="/home/gestor/apache/services/cassandra/logs"/>
+    <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf" imageTag="New Kubernetes Deployment Conf">
+      <constraints/>
+    </deploymentConfig>
     <dataCenters name="PollutionCluster" id="PollutionCluster">
       <racks name="PollutionCluster" id="PollutionCluster" nodes="//@ownedElements.6"/>
     </dataCenters>

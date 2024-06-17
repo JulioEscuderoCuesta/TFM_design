@@ -1,37 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pasys:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pasys="www.unican.es/istr/pasys">
-  <ownedElements xsi:type="pasys:AVROService"/>
-  <ownedElements xsi:type="pasys:AWSVirtualProcessingNode"/>
-  <ownedElements xsi:type="pasys:CassandraService"/>
-  <ownedElements xsi:type="pasys:KafkaService"/>
-  <ownedElements xsi:type="pasys:KafkaWorkloadStreamData"/>
+  <ownedElements xsi:type="pasys:AVROService" host="//@ownedElements.4">
+    <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf">
+      <volumes/>
+      <ports/>
+      <constraints/>
+    </deploymentConfig>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:AWSVirtualProcessingNode" name="new Communication Meter" connectedTo="//@ownedElements.7">
+    <ownedMeters xsi:type="pasys:NodeResourceMeter" monitoringServer="//@ownedElements.16">
+      <deploymentConfig xsi:type="pasys:SwarmDeploymentConf">
+        <volumes/>
+        <ports/>
+        <constraints/>
+      </deploymentConfig>
+    </ownedMeters>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:KafkaService" host="//@ownedElements.21">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf">
+      <volumes/>
+      <ports/>
+      <constraints/>
+    </deploymentConfig>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:KafkaWorkloadStreamData" holder="//@ownedElements.2">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+    <ownedMeters monitoringServer="//@ownedElements.16"/>
+    <assignedPartition host="//@ownedElements.1"/>
+  </ownedElements>
   <ownedElements xsi:type="pasys:KubernetesCluster"/>
-  <ownedElements xsi:type="pasys:MemSQLService"/>
-  <ownedElements xsi:type="pasys:Neo4JService"/>
-  <ownedElements xsi:type="pasys:Network"/>
-  <ownedElements xsi:type="pasys:NetworkUtilization"/>
-  <ownedElements xsi:type="pasys:NodeScheduler" host="//@ownedElements.5"/>
+  <ownedElements xsi:type="pasys:MemSQLService" host="//@ownedElements.10">
+    <deploymentConfig xsi:type="pasys:NomadDeploymentConf"/>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:Neo4JService" host="//@ownedElements.21">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf">
+      <volumes type="BIND"/>
+      <ports target="hOLA" published="ASDFASDF"/>
+      <ports target="ASDFASDFASFAS"/>
+      <ports/>
+      <constraints/>
+    </deploymentConfig>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:Network" name="SUPER RED"/>
+  <ownedElements xsi:type="pasys:NetworkUtilization" target="//@ownedElements.7"/>
+  <ownedElements xsi:type="pasys:NodeScheduler" host="//@ownedElements.4">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:NomadCluster"/>
   <ownedElements xsi:type="pasys:OrchestrationCluster"/>
-  <ownedElements xsi:type="pasys:PhysicalProcessingNode">
-    <ownedMeters xsi:type="pasys:NodeResourceMeter"/>
+  <ownedElements xsi:type="pasys:PhysicalProcessingNode" connectedTo="//@ownedElements.7"/>
+  <ownedElements xsi:type="pasys:ProcessingNodeCluster" nodes="//@ownedElements.1 //@ownedElements.12"/>
+  <ownedElements xsi:type="pasys:ProcessingNodeMemory" target="//@ownedElements.12"/>
+  <ownedElements xsi:type="pasys:ProcessingNodeUtilization" target="//@ownedElements.1"/>
+  <ownedElements xsi:type="pasys:PrometheusService" host="//@ownedElements.21" monitorizedMeters="//@ownedElements.1/@ownedMeters.0 //@ownedElements.3/@ownedMeters.0 //@ownedElements.22/@ownedStreamData.0/@ownedMeters.0 //@ownedElements.22/@ownedStreamData.1/@ownedMeters.0 //@ownedElements.22/@ownedTaskExecutors.0/@ownedMeters.0 //@ownedElements.22/@ownedMeters.0 //@ownedElements.24/@ownedMeters.0">
+    <deploymentConfig xsi:type="pasys:NomadDeploymentConf"/>
+    <exportersData/>
   </ownedElements>
-  <ownedElements xsi:type="pasys:ProcessingNodeCluster"/>
-  <ownedElements xsi:type="pasys:ProcessingNodeMemory"/>
-  <ownedElements xsi:type="pasys:ProcessingNodeUtilization"/>
-  <ownedElements xsi:type="pasys:PrometheusService"/>
-  <ownedElements xsi:type="pasys:SchedulableSet"/>
-  <ownedElements xsi:type="pasys:SparkService"/>
-  <ownedElements xsi:type="pasys:StormService"/>
-  <ownedElements xsi:type="pasys:StreamDataRate"/>
+  <ownedElements xsi:type="pasys:SchedulableSet" workflows="//@ownedElements.22"/>
+  <ownedElements xsi:type="pasys:SparkService" host="//@ownedElements.10" load="//@ownedElements.17" master="//@ownedElements.4">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:StormService" host="//@ownedElements.11" workflows="//@ownedElements.22" zookeeperConnect="//@ownedElements.26">
+    <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf">
+      <volumes/>
+      <ports/>
+      <ports/>
+      <ports/>
+      <ports/>
+      <constraints/>
+    </deploymentConfig>
+    <nimbus>
+      <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf"/>
+    </nimbus>
+    <supervisor>
+      <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+    </supervisor>
+    <ui>
+      <deploymentConfig xsi:type="pasys:NomadDeploymentConf"/>
+    </ui>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:StreamDataRate" target="//@ownedElements.22/@ownedStreamData.1" meter="//@ownedElements.24/@ownedMeters.0"/>
   <ownedElements xsi:type="pasys:SwarmCluster"/>
-  <ownedElements xsi:type="pasys:Workflow">
-    <ownedStreamData xsi:type="pasys:KafkaFlowStreamData"/>
-    <ownedStreamData xsi:type="pasys:KafkaFlowStreamData"/>
-    <ownedTaskExecutors/>
+  <ownedElements xsi:type="pasys:Workflow" rootTask="//@ownedElements.22/@ownedTasks.0" scheduler="//@ownedElements.19">
+    <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf"/>
+    <ownedStreamData xsi:type="pasys:KafkaFlowStreamData" source="//@ownedElements.22/@ownedStreamData.0" predecessor="//@ownedElements.24" holder="//@ownedElements.2">
+      <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+      <ownedMeters monitoringServer="//@ownedElements.16"/>
+      <assignedPartition host="//@ownedElements.1"/>
+    </ownedStreamData>
+    <ownedStreamData xsi:type="pasys:DerivedStreamData" inputs="//@ownedElements.22/@ownedStreamData.0">
+      <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf"/>
+      <ownedMeters monitoringServer="//@ownedElements.16">
+        <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf"/>
+      </ownedMeters>
+      <assignedPartition host="//@ownedElements.12"/>
+    </ownedStreamData>
+    <ownedTasks returnedStreamData="//@ownedElements.22/@ownedStreamData.1" triggerStreamData="//@ownedElements.3" inputStreamData="//@ownedElements.3"/>
+    <ownedTaskExecutors executedTasks="//@ownedElements.22/@ownedTasks.0">
+      <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+      <ownedMeters monitoringServer="//@ownedElements.16" metric="//@ownedElements.25">
+        <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+      </ownedMeters>
+    </ownedTaskExecutors>
+    <ownedMeters monitoringServer="//@ownedElements.16" metric="//@ownedElements.23">
+      <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+    </ownedMeters>
   </ownedElements>
-  <ownedElements xsi:type="pasys:WorkflowLatency"/>
-  <ownedElements xsi:type="pasys:WorkloadStreamData"/>
-  <ownedElements xsi:type="pasys:TaskProcessingAmount"/>
-  <ownedElements xsi:type="pasys:ZookeeperService"/>
+  <ownedElements xsi:type="pasys:WorkflowLatency" target="//@ownedElements.22" meter="//@ownedElements.22/@ownedMeters.0"/>
+  <ownedElements xsi:type="pasys:WorkloadStreamData" holder="//@ownedElements.2">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+    <ownedMeters monitoringServer="//@ownedElements.16" metric="//@ownedElements.20">
+      <deploymentConfig xsi:type="pasys:SwarmDeploymentConf"/>
+    </ownedMeters>
+    <assignedPartition host="//@ownedElements.1"/>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:TaskProcessingAmount" target="//@ownedElements.22/@ownedTasks.0" meter="//@ownedElements.22/@ownedTaskExecutors.0/@ownedMeters.0"/>
+  <ownedElements xsi:type="pasys:ZookeeperService" host="//@ownedElements.21">
+    <deploymentConfig xsi:type="pasys:SwarmDeploymentConf">
+      <volumes/>
+      <ports/>
+      <constraints/>
+    </deploymentConfig>
+  </ownedElements>
+  <ownedElements xsi:type="pasys:CassandraService" name="New Cassandra Service" host="//@ownedElements.21"/>
+  <ownedElements xsi:type="pasys:KafkaService" name="New Kafka Service" host="//@ownedElements.21"/>
   <authenticationFiles/>
 </pasys:ComputationalSystem>

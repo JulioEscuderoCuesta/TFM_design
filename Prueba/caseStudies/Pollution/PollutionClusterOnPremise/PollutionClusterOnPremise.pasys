@@ -42,7 +42,7 @@
   </ownedElements>
   <ownedElements xsi:type="pasys:CassandraService" name="PollutionCassandra" id="PollutionCassandra" host="//@ownedElements.3" logging="root" passwd="root" port="9042" seeds="//@ownedElements.3" seedProviderClass="SimpleProvider" dataFileDir="/home/gestor/apache/Services/cassandra/data/data">
     <deploymentConfig xsi:type="pasys:NodeDeploymentConf" artifactLocator="/home/gestor/apache/services/cassandra/bin" artifactName="cassandra" configFolderPath="/home/gestor/apache/services/cassandra/config" scriptFolderPath="/home/gestor/apache/services/cassandra/scripts" dataFolderPath="/home/gestor/apache/services/cassandra/data" logFolderPath="/home/gestor/apache/services/cassandra/logs"/>
-    <cqlSchemas filePath="/home/gestor/apache/apps/pollution/workflows/data" fileName="cassandra"/>
+    <cqlSchemas xsi:type="pasys:DeploymentFileDescriptor" filePath="/home/gestor/apache/apps/pollution/workflows/data" fileName="cassandra"/>
     <dataCenters name="PollutionCluster" id="PollutionCluster">
       <racks name="PollutionCluster" id="PollutionCluster" nodes="//@ownedElements.3"/>
     </dataCenters>

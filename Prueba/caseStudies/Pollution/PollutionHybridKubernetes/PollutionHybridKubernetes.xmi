@@ -25,7 +25,11 @@
       <deploymentConfig xsi:type="pasys:NodeDeploymentConf" artifactLocator="/home/gestor/apache/services/storm/bin" artifactName="storm" configFolderPath="/home/gestor/apache/services/storm/config" scriptFolderPath="/home/gestor/apache/services/storm/scripts" dataFolderPath="/home/gestor/apache/services/storm/data" logFolderPath="/home/gestor/apache/services/storm/logs"/>
     </ui>
   </ownedElements>
-  <ownedElements xsi:type="pasys:KafkaWorkloadStreamData" name="Pollution" id="Pollution" numPartitions="1" numReplication="1" holder="1"/>
+  <ownedElements xsi:type="pasys:KafkaWorkloadStreamData" name="Pollution" id="Pollution" numPartitions="1" numReplication="1" holder="1">
+    <deploymentConfig xsi:type="pasys:KubernetesDeploymentConf" imageTag="New Kubernetes Deployment Conf"/>
+    <ownedMeters name="new Stream Rate Meter"/>
+    <assignedPartition key="new Stream Data Partition"/>
+  </ownedElements>
   <ownedElements xsi:type="pasys:Workflow" name="PollutionProcess" id="PollutionProcess" rootTask="//@ownedElements.11/@ownedTasks.0" scheduler="//@ownedElements.9">
     <deploymentConfig xsi:type="pasys:NodeDeploymentConf" artifactLocator="/home/gestor/apache/apps/pollution/workflows/jars" artifactName="SantanderPollution.jar" configFolderPath="/home/gestor/apache/apps/pollution/workflows/config" scriptFolderPath="/home/gestor/apache/apps/pollution/workflows/scripts" dataFolderPath="/home/gestor/apache/apps/pollution/workflows/data" logFolderPath="/home/gestor/apache/apps/pollution/workflows/logs"/>
     <ownedTasks name="MainTask" id="MainTask" implementingClassName="es.unican.dintenr.santanderPollution.SantanderPollutionTopology" triggerStreamData="//@ownedElements.10"/>
